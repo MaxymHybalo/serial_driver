@@ -50,10 +50,17 @@ void loop(){
     if (input == KEYBOARD){
       Serial.write(input);
       if(Serial.available() > 0 && input == 'K') {
-        char key = Serial.read();  
+        char key = Serial.read();
+        if (key == 'D') {
+          Keyboard.print(0XD9);
+        }else if (key == 'U') {
+          Keyboard.print(0XDA);
+        } else {
+          Serial.write(key);
+          Keyboard.print(key);
+          input = '0';          
+        }
         Serial.write(key);
-        Keyboard.print(key);
-        input = '0';
       }
     } else {
       input = '0';
