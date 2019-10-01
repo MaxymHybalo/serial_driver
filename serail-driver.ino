@@ -27,39 +27,62 @@ void loop(){
   if(Serial.available() > 0){
     if(input == '0'){
       input = Serial.read();
-      Serial.write("Write: ");
-      Serial.write(input);
     }
-    if(input == MOVE_X){
-      Mouse.move(dMove, 0, 0);
-      input = '0';
+
+    switch(input) {
+        case MOVE_X:
+            Mouse.move(dMove, 0, 0);
+            break;
+        case MOVE_Y:
+            Mouse.move(0, dMove, 0);
+            break;
+        case UN_X:
+            Mouse.move(-dMove, 0, 0);
+            break;
+        case UN_Y:
+            Mouse.move(0, -dMove, 0);
+            break;
+        case SIMPLE_CLICK:
+            Mouse.click();
+            break;
+        case RIGHT_PRESS:
+            Mouse.press(MOUSE_RIGHT);
+            break;
+        case RIGHT_RELEASE:
+            Mouse.release(MOUSE_RIGHT);
+            break;
+
     }
-    if(input == MOVE_Y){
-      Mouse.move(0, dMove, 0);
-      input = '0';
-    }
-   if(input == UN_X){
-      Mouse.move(-dMove, 0, 0);
-      input = '0';
-    }
-    if(input == UN_Y){
-      Mouse.move(0, -dMove, 0);
-      input = '0';
-    }
-    if(input == SIMPLE_CLICK){
-      Mouse.click();
-      input = '0';
-    }
+//     if(input == MOVE_X){
+//       Mouse.move(dMove, 0, 0);
+//       input = '0';
+//     }
+//     if(input == MOVE_Y){
+//       Mouse.move(0, dMove, 0);
+//       input = '0';
+//     }
+//    if(input == UN_X){
+//       Mouse.move(-dMove, 0, 0);
+//       input = '0';
+//     }
+//     if(input == UN_Y){
+//       Mouse.move(0, -dMove, 0);
+//       input = '0';
+//     }
+//     if(input == SIMPLE_CLICK){
+//       Mouse.click();
+//       input = '0';
+//     }
     
-    if (input == RIGHT_PRESS){
-      Mouse.press(MOUSE_RIGHT); 
-      input = '0';
-    }
+//     if (input == RIGHT_PRESS){
+//       Mouse.press(MOUSE_RIGHT); 
+//       input = '0';
+//     }
     
-    if (input == RIGHT_RELEASE){
-      Mouse.release(MOUSE_RIGHT); 
-      input = '0';
-    }
+//     if (input == RIGHT_RELEASE){
+//       Mouse.release(MOUSE_RIGHT); 
+//       input = '0';
+//     }
     if (input == KEYBOARD){
       Serial.write(input);
       if(Serial.available() > 0 && input == 'K') { // why serial check at avaliable 
@@ -76,11 +99,9 @@ void loop(){
         } else {
           Keyboard.print(key);
         }
-        input = '0';
       }
-    } else {
-      input = '0';
     }
+    input = '0';
   }
 }
 
