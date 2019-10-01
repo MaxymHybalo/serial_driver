@@ -48,8 +48,6 @@ void loop(){
     }
     if(input == SIMPLE_CLICK){
       Mouse.click();
-//      TODO check why it s writed
-//      Serial.write('C');
       input = '0';
     }
     
@@ -64,7 +62,7 @@ void loop(){
     }
     if (input == KEYBOARD){
       Serial.write(input);
-      if(Serial.available() > 0 && input == 'K') {
+      if(Serial.available() > 0 && input == 'K') { // why serial check at avaliable 
         char key = Serial.read();
         if (key == 'D') {
           Keyboard.press(0XD9);
