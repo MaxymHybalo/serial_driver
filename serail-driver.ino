@@ -14,6 +14,11 @@ const char UN_Y =             'U';
 const char KEYBOARD =         'K';
 const char RELEASE_KEYBOARD = 'Q';
 
+const char L_SHIFT = 's';
+const char L_ALT = 'a';
+const char L_CTRL = 'c';
+
+
 char input = '0';
 
 int dMove = 2;
@@ -79,6 +84,12 @@ void loop(){
           Keyboard.press(0XDA);
         } else if (key == 'E') {
           Keyboard.press(0xB0);
+        } else if (key == 's') {
+          Keyboard.press(KEY_LEFT_SHIFT);
+        } else if (key == 'a') {
+          Keyboard.press(KEY_LEFT_ALT);
+        } else if (key == 'c') {
+          Keyboard.press(KEY_LEFT_CTRL);
         } else {
           Keyboard.press(key);
         }
