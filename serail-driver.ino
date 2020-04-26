@@ -17,7 +17,7 @@ const char RELEASE_KEYBOARD = 'Q';
 const char L_SHIFT = 's';
 const char L_ALT = 'a';
 const char L_CTRL = 'c';
-
+const char TAB = 't';
 
 char input = '0';
 
@@ -90,6 +90,8 @@ void loop(){
           Keyboard.press(KEY_LEFT_ALT);
         } else if (key == 'c') {
           Keyboard.press(KEY_LEFT_CTRL);
+        } else if (key == 't') {
+          Keyboard.press(KEY_TAB);
         } else {
           Keyboard.press(key);
         }
